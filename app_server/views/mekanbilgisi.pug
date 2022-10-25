@@ -1,4 +1,5 @@
 extends layout
+include fonksiyonlar/yildiz
 block content
   .row.page-header 
     .col-lg-12 
@@ -8,30 +9,26 @@ block content
       .row 
         .col-xs-12.col-sm-6 
           p.rating 
-            span.glyphicon.glyphicon-star
-            span.glyphicon.glyphicon-star
-            span.glyphicon.glyphicon-star
-            span.glyphicon.glyphicon-star
-            span.glyphicon.glyphicon-star-empty
+              +puanOlustur(mekanDetay.puan)
           p Centrum Garden AVM 
           .panel.panel-primary 
             .panel-heading 
               h2.panel-title Acilis Saatleri
-            .panel-body 
-              p 
-                | Pazartesi-Cuma: 7:00-23:00
-              p 
-                | Cumartesi-Pazar: 9:00-22:00
+            .panel-body
+               each saat in mekanDetay.saatler
+                p 
+                  | #{saat.gunler}:&nbsp;
+                  if (saat.kapali)
+                    | Kapali
+                  else
+                    | #{saat.acilis}-#{saat.kapanis}    
           .panel.panel-primary 
             .panel-heading          
-              h2.panel-title Neler var 
+              h2.panel-title Neler var?
             .panel-body 
-              span.label.label-warning Dunya Kahveleri 
-              | &nbsp;
-              span.label.label-warning Kekler 
-              | &nbsp;
-              span.label.label-warning Pastalar 
-              | &nbsp;
+               each imkan in mekanDetay.imkanlar
+                span.label.label-warning= imkan
+                | &nbsp;
         .col-xs-23.col-sm-6 
           .panel.panel-primary 
             .panel-heading        
@@ -47,18 +44,15 @@ block content
           a.btn.btn-default.pull-right(href='/mekan/yorum/yeni') Yorum Ekle 
           h2.panel-title Musteri Yorumlari 
         .panel-body.review-container 
-          .row 
-            .review 
-              .well.well-sm.review-header 
-                span.rating 
-                span.glyphicon.glyphicon-star
-                span.glyphicon.glyphicon-star
-                span.glyphicon.glyphicon-star
-                span.glyphicon.glyphicon-star
-                span.glyphicon.glyphicon-star-empty 
-                span.review-author Rza Maharramov
-                small.reviewTimestamp &nbsp; 13 Ekim 2022
-              .col-xs-12 
-                p Kahveler  
+           each yorum in mekanDetay.yorumlar
+            .row 
+              .review 
+                .well.well-sm.review-header 
+                  span.rating 
+                    +puanOlustur(yorum.puan)
+                  span.review-author= yorum.yorumYapan
+                  small.reviewTimestamp &nbsp; #{yorum.tarih}
+                .col-xs-12 
+                  p= yorum.yorumMetni
                 
 
