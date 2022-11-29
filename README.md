@@ -8,3 +8,11 @@
 
 [3. Bir Mekana Ait Belirli Bir Yorumu Getir](https://mekanbul5.maharramovrza.repl.co/api/mekanlar/637d34b0b3677d91e058c942)
 ![3](/resimler/yorum.png)
+
+# API Collections Test
+
+![Collection test](/resimler/apiCollectionTest.png)
+
+# API Mocha Test
+
+![Mocha test](/resimler/mochatest.png)
