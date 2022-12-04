@@ -1,0 +1,8 @@
+mixin tarihFormatla(formatsizGun)
+    -var gun=new Date(formatsizGun)
+    -var aylar=["Ocak","Şubat","Mart","Nisan","Mayıs","Haziran","Temmuz","Ağustos","Eylül","Ekim","Kasım","Aralik"]
+    -var gunBilgisi=gun.getDate()////
+    -var ayBilgisi=aylar[gun.getMonth()]//burasi index dondurun  0-11 arasi o indexden tapir hansi ay oldugunun
+    -var yilBilgisi=gun.getFullYear()///burasi da o gelen formatsigun den il bildigisi alir 
+    -var sonuc=gunBilgisi+" "+ayBilgisi+" "+ yilBilgisi
+    =sonuc
